@@ -1,17 +1,18 @@
 package com.lms.service;
 
 import java.util.List;
+import java.util.Optional;
 
-import com.lms.models.Books;
+import com.lms.models.Book;
 
 public interface BookService {
-	public void addBook(Books book);
-	
-	public Books getBook(Integer bookId);
-	
-	public Books updateBook(Integer idBooks,Books book);
+//	public void addBook(Book book);
+//
+//	public Book getBook(Integer idBooks);
+//
+//	public Book updateBook(Integer idBooks, Book book);
+//
+//	public void deleteBook(Integer idBooks);
 
-	public void deleteBook(Integer idBooks);
-
-	public List<Books> getAllBooks();
+	public List<Book> getAllBooks();
 }

@@ -4,35 +4,44 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Books {
+@Table(name = "books")
+public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idBooks;
+	private Integer idBooks;
 	private String bookTitle;
-	private int idAuthors;
-	private int idGenre;
-	private int bookYear;
+	private Integer idAuthors;
+	private Integer idGenre;
+	private Integer bookYear;
 	private String bookDescription;
 	private String bookPicture;
-	private boolean bookStatus;
+	private Boolean bookStatus;
 
-	public Books() {
-	}
+//	@OneToMany
+//	private Collection<Author> authors = new ArrayList<Author>();
+//	@OneToMany
+//	private Collection<Genre> genre = new ArrayList<Genre>();
 
-	public Books(String bookTitle, int idAuthor, int idGenre, int bookYear, String bookDescr, String linkToPicture,
-			boolean bookStatus) {
+	public Book(String bookTitle, Integer idAuthors, Integer idGenre, Integer bookYear, String bookDescription,
+			String bookPicture, Boolean bookStatus) {
+		super();
 		this.bookTitle = bookTitle;
-		this.idAuthors = idAuthor;
+		this.idAuthors = idAuthors;
 		this.idGenre = idGenre;
 		this.bookYear = bookYear;
-		this.bookDescription = bookDescr;
-		this.bookPicture = linkToPicture;
+		this.bookDescription = bookDescription;
+		this.bookPicture = bookPicture;
 		this.bookStatus = bookStatus;
 	}
+	
+	public Book() {
+		super();
+	}
 
-	public int getIdBook() {
+	public Integer getIdBook() {
 		return idBooks;
 	}
 
@@ -44,27 +53,27 @@ public class Books {
 		this.bookTitle = bookTitle;
 	}
 
-	public int getIdAuthor() {
+	public Integer getIdAuthor() {
 		return idAuthors;
 	}
 
-	public void setIdAuthor(int idAuthor) {
+	public void setIdAuthor(Integer idAuthor) {
 		this.idAuthors = idAuthor;
 	}
 
-	public int getIdGenre() {
+	public Integer getIdGenre() {
 		return idGenre;
 	}
 
-	public void setIdGenre(int idGenre) {
+	public void setIdGenre(Integer idGenre) {
 		this.idGenre = idGenre;
 	}
 
-	public int getBookYear() {
+	public Integer getBookYear() {
 		return bookYear;
 	}
 
-	public void setBookYear(int bookYear) {
+	public void setBookYear(Integer bookYear) {
 		this.bookYear = bookYear;
 	}
 
@@ -84,11 +93,11 @@ public class Books {
 		this.bookPicture = linkToPicture;
 	}
 
-	public boolean isBookStatus() {
+	public Boolean isBookStatus() {
 		return bookStatus;
 	}
 
-	public void setBookStatus(boolean bookStatus) {
+	public void setBookStatus(Boolean bookStatus) {
 		this.bookStatus = bookStatus;
 	}
 }

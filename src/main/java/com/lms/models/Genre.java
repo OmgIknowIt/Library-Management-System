@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 public class Genre {
@@ -13,12 +12,13 @@ public class Genre {
 	private int idGenre;
 	
 	private String genreName;
-
-	public Genre() {
-		
-	}
 	
+	public Genre() {
+		super();
+	}
+
 	public Genre(String genre) {
+		super();
 		setGenreName(genre);
 	}
 	
