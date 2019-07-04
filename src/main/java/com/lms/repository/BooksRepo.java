@@ -1,11 +1,9 @@
 package com.lms.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
-import com.lms.models.Books;
+import com.lms.models.Book;
 
-public interface BooksRepo extends CrudRepository<Books,Integer>{
+public interface BooksRepo extends JpaRepository<Book, Integer> {
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lms.models.Books;
+import com.lms.models.Book;
 import com.lms.repository.BooksRepo;
 
 @Service
@@ -16,31 +16,28 @@ public class BookServiceImpl implements BookService {
 	private BooksRepo bookRepository;
 
 	@Override
-	public void addBook(Books book) {
+	public void addBook(Book book) {
 		bookRepository.save(book);
 	}
 
 	@Override
-	public Books getBook(Integer idBooks) {
-		//return bookRepository.findOne(idBooks);
-		return null;
+	public Book getBook(Integer idBooks) {
+		return bookRepository.getOne(idBooks);
 	}
 
 	@Override
-	public Books updateBook(Integer idBooks, Books book) {
+	public Book updateBook(Integer idBooks, Book book) {
 		return bookRepository.save(book);
 	}
 
 	@Override
-	public void deleteBook(Integer bookId) {
-		//bookRepository.delete(bookId);
+	public void deleteBook(Integer idBooks) {
+		bookRepository.deleteById(idBooks);
 	}
 
 	@Override
-	public List<Books> getAllBooks() {
-		List<Books> books = new ArrayList<>();
-		bookRepository.findAll().forEach(books::add);
-		return books;
+	public List<Book> getAllBooks() {
+		return bookRepository.findAll();
 	}
 
 }
