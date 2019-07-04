@@ -22,9 +22,9 @@
 				<tbody>
 					<tr th:each="book : ${listOfBooks}">
 						<td th:text="${book.getbookTitle()}"></td>
-						<td th:text="${book.getIdAuthor()}"></td>
+						<td th:text="${book.getBooksAuthor().getAuthorName()}"></td>
 						<td th:text="${book.getBookYear()}"></td>
-						<td th:text="${book.getIdGenre()}"></td>
+						<td th:text="${book.getBooksGenre().getGenreName()}"></td>
 					</tr>
 				</tbody>
 			</table>

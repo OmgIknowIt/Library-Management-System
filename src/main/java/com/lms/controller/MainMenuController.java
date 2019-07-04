@@ -10,12 +10,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.lms.models.Book;
+import com.lms.service.AuthorService;
 import com.lms.service.BookService;
+import com.lms.service.GenreService;
 
 @Controller
 public class MainMenuController {
 	@Autowired
 	private BookService bookRepo;
+	@Autowired
+	private GenreService genreRepo;
+	@Autowired
+	private AuthorService authorRepo;
 	
 	@RequestMapping(value="/all" , method = RequestMethod.GET)
 	public ModelAndView showAll() throws IOException {

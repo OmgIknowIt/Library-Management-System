@@ -15,25 +15,25 @@ public class BookServiceImpl implements BookService {
 	@Autowired
 	private BooksRepo bookRepository;
 
-//	@Override
-//	public void addBook(Book book) {
-//		bookRepository.save(book);
-//	}
-//
-//	@Override
-//	public Book getBook(Integer idBooks) {
-//		return bookRepository.findOne(idBooks);
-//	}
-//
-//	@Override
-//	public Book updateBook(Integer idBooks, Book book) {
-//		return bookRepository.save(book);
-//	}
-//
-//	@Override
-//	public void deleteBook(Integer idBooks) {
-//		bookRepository.delete(idBooks);
-//	}
+	@Override
+	public void addBook(Book book) {
+		bookRepository.save(book);
+	}
+
+	@Override
+	public Book getBook(Integer idBooks) {
+		return bookRepository.getOne(idBooks);
+	}
+
+	@Override
+	public Book updateBook(Integer idBooks, Book book) {
+		return bookRepository.save(book);
+	}
+
+	@Override
+	public void deleteBook(Integer idBooks) {
+		bookRepository.deleteById(idBooks);
+	}
 
 	@Override
 	public List<Book> getAllBooks() {
