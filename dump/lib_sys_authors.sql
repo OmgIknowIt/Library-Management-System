@@ -23,10 +23,10 @@ DROP TABLE IF EXISTS `authors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `authors` (
-  `idAuthors` int(11) NOT NULL AUTO_INCREMENT,
-  `authorName` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`idAuthors`),
-  UNIQUE KEY `AuthorName_UNIQUE` (`authorName`)
+  `author_id` int(11) NOT NULL AUTO_INCREMENT,
+  `author_name` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`author_id`),
+  UNIQUE KEY `AuthorName_UNIQUE` (`author_name`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-03 14:05:37
+-- Dump completed on 2019-07-04 16:56:55
