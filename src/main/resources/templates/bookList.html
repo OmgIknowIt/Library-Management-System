@@ -64,9 +64,9 @@
 										<td th:text="${book.getBookYear()}"></td>
 										<td th:text="${book.getBooksGenre().getGenreName()}"></td>
 										<td><a
-											th:href="@{/edit_book/?id={id}(id=${book.getIdBook()})}"
+											th:href="@{/edit_book/?id={id}(id=${book.getIdBooks()})}"
 											class="btn btn-info">Edit</a> <a
-											th:href="@{/delete_book/?id={id}(id=${book.getIdBook()})}"
+											th:href="@{/delete_book/?id={id}(id=${book.getIdBooks()})}"
 											class="btn btn-danger">Delete</a></td>
 									</tr>
 								</tbody>

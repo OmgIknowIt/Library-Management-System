@@ -2,8 +2,10 @@ package com.lms.models;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,10 +15,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "books")
-public class Book  implements Serializable {
-	/**
-	 * 
-	 */
+public class Book implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,10 +24,6 @@ public class Book  implements Serializable {
 	private Integer idBooks;
 	@Column(name = "book_title")
 	private String bookTitle;
-//	@Column(name = "id_author")
-//	private Integer idAuthors;
-//	@Column(name = "id_genre")
-//	private Integer idGenre;
 	@Column(name = "book_year")
 	private Integer bookYear;
 	@Column(name = "book_description")
@@ -37,35 +33,22 @@ public class Book  implements Serializable {
 	@Column(name = "book_status")
 	private Boolean bookStatus;
 
-	@ManyToOne
+	@ManyToOne//(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_author")
 	private Author booksAuthor;
-	@ManyToOne
+	@ManyToOne//(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_genre")
 	private Genre booksGenre;
-
-//	public Book(Integer idBooks, String bookTitle, Integer bookYear, String bookDescription, String bookPicture,
-//			Boolean bookStatus, Author booksAuthor, Genre booksGenre) {
-//		super();
-//		this.idBooks = idBooks;
-//		this.bookTitle = bookTitle;
-//		this.bookYear = bookYear;
-//		this.bookDescription = bookDescription;
-//		this.bookPicture = bookPicture;
-//		this.bookStatus = bookStatus;
-//		this.booksAuthor = booksAuthor;
-//		this.booksGenre = booksGenre;
-//	}
 
 	public Book() {
 		super();
 	}
-	
-	public void setIdBook(Integer idBooks) {
+
+	public void setIdBooks(Integer idBooks) {
 		this.idBooks = idBooks;
 	}
 
-	public Integer getIdBook() {
+	public Integer getIdBooks() {
 		return idBooks;
 	}
 
@@ -77,22 +60,6 @@ public class Book  implements Serializable {
 		this.bookTitle = bookTitle;
 	}
 
-//	public Integer getIdAuthor() {
-//		return idAuthors;
-//	}
-//
-//	public void setIdAuthor(Integer idAuthor) {
-//		this.idAuthors = idAuthor;
-//	}
-//
-//	public Integer getIdGenre() {
-//		return idGenre;
-//	}
-//
-//	public void setIdGenre(Integer idGenre) {
-//		this.idGenre = idGenre;
-//	}
-
 	public Integer getBookYear() {
 		return bookYear;
 	}
@@ -101,12 +68,12 @@ public class Book  implements Serializable {
 		this.bookYear = bookYear;
 	}
 
-	public String getBookDescr() {
+	public String getBookDescription() {
 		return bookDescription;
 	}
 
-	public void setBookDescr(String bookDescr) {
-		this.bookDescription = bookDescr;
+	public void setBookDescription(String bookDescription) {
+		this.bookDescription = bookDescription;
 	}
 
 	public String getBookPicture() {
@@ -117,7 +84,7 @@ public class Book  implements Serializable {
 		this.bookPicture = linkToPicture;
 	}
 
-	public Boolean isBookStatus() {
+	public Boolean getBookStatus() {
 		return bookStatus;
 	}
 
