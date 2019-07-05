@@ -59,6 +59,10 @@ public class Book  implements Serializable {
 	public Book() {
 		super();
 	}
+	
+	public void setIdBook(Integer idBooks) {
+		this.idBooks = idBooks;
+	}
 
 	public Integer getIdBook() {
 		return idBooks;

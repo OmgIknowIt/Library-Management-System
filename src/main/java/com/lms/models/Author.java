@@ -43,6 +43,10 @@ public class Author  implements Serializable {
 	public Integer getIdAuthors() {
 		return idAuthors;
 	}
+	
+	public void setIdAuthors(Integer idAuthors) {
+		this.idAuthors = idAuthors;
+	}
 
 	public String getAuthorName() {
 		return authorName;

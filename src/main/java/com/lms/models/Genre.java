@@ -42,6 +42,10 @@ public class Genre  implements Serializable {
 	public int getIdGenre() {
 		return idGenre;
 	}
+	
+	public void setIdGenre(Integer idGenre) {
+		this.idGenre = idGenre;
+	}
 
 	public String getGenreName() {
 		return genreName;

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<script th:src="@{/js/jquery-3.4.1.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+<title>Add Book</title>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header page-scroll">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> Menu <i
+						class="fa fa-bars"></i>
+				</button>
+				<a class="navbar-brand" href="#">TEXT</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-left">
+					<li class="active"></li>
+					<li><a href="/books">List Books</a></li>
+					<li><a href="/authors">List Authors</a></li>
+					<li><a href="/add_book">Add Book</a></li>
+					<li><a href="/add_author">Add Author</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div align="center">
+		<h1>New/Edit Book</h1>
+		<form action="#" th:action="@{/save_book}" th:object="${book}"
+			method="post">
+			<table>
+				<input type="hidden" th:field="*{idBooks}" />
+				<tr>
+					<td>Book Title:</td>
+					<td><input type="text" class="form-control"
+						th:field="*{bookTitle}"></input></td>
+				</tr>
+				<tr>
+					<td>Author:</td>
+					<td><input type="text" class="form-control"
+						th:field="*{booksAuthor}"></input></td>
+				</tr>
+				<tr>
+					<td>Publish Year:</td>
+					<td><input type="text" class="form-control"
+						th:field="*{bookYear}"></input></td>
+				</tr>
+				<tr>
+					<td>Genre:</td>
+					<td><input type="text" class="form-control"
+						th:field="*{booksGenre}"></input></td>
+				</tr>
+				<tr>
+					<td>Description:</td>
+					<td><input type="text" class="form-control"
+						th:field="*{bookDescription}"></input></td>
+				</tr>
+				<tr>
+					<td>Picture Link:</td>
+					<td><input type="text" class="form-control"
+						th:field="*{bookPicture}"></input></td>
+				</tr>
+				<tr>
+					<td>Status:</td>
+					<td><input type="text" class="form-control"
+						th:field="*{bookStatus}"></input></td>
+				</tr>
+
+				<tr>
+					&nbsp;&nbsp;
+					<td><button class="btn btn-danger" type="submit">Save</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</body>
+</html>

@@ -32,7 +32,7 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public void deleteBook(Integer idBooks) {
-		bookRepository.deleteById(idBooks);
+		bookRepository.deleteById(idBooks);//.getOne(idBooks).setBookStatus(false);
 	}
 
 	@Override
