@@ -44,16 +44,17 @@ public class Book  implements Serializable {
 	@JoinColumn(name = "id_genre")
 	private Genre booksGenre;
 
-//	public Book(String bookTitle, Integer idAuthors, Integer idGenre, Integer bookYear, String bookDescription,
-//			String bookPicture, Boolean bookStatus) {
+//	public Book(Integer idBooks, String bookTitle, Integer bookYear, String bookDescription, String bookPicture,
+//			Boolean bookStatus, Author booksAuthor, Genre booksGenre) {
 //		super();
+//		this.idBooks = idBooks;
 //		this.bookTitle = bookTitle;
-//		this.idAuthors = idAuthors;
-//		this.idGenre = idGenre;
 //		this.bookYear = bookYear;
 //		this.bookDescription = bookDescription;
 //		this.bookPicture = bookPicture;
 //		this.bookStatus = bookStatus;
+//		this.booksAuthor = booksAuthor;
+//		this.booksGenre = booksGenre;
 //	}
 
 	public Book() {
@@ -68,7 +69,7 @@ public class Book  implements Serializable {
 		return idBooks;
 	}
 
-	public String getbookTitle() {
+	public String getBookTitle() {
 		return bookTitle;
 	}
 
@@ -108,11 +109,11 @@ public class Book  implements Serializable {
 		this.bookDescription = bookDescr;
 	}
 
-	public String getbookPicture() {
+	public String getBookPicture() {
 		return bookPicture;
 	}
 
-	public void setbookPicture(String linkToPicture) {
+	public void setBookPicture(String linkToPicture) {
 		this.bookPicture = linkToPicture;
 	}
 
