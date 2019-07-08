@@ -1,16 +1,15 @@
 package com.lms.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -21,15 +20,14 @@ public class Genre  implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "genre_id")
-	private int idGenre;
+	private Integer idGenre;
 	@Column(name = "genre_name")
 	private String genreName;
 
-	@OneToMany//(fetch = FetchType.EAGER)
-	//@JoinColumn(name = "id_genre")
-	private List<Book> booksGenre = new ArrayList<Book>();
+	@OneToMany(mappedBy="booksGenre", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<Book> books;
 
 	public Genre() {
 		super();
@@ -40,7 +38,7 @@ public class Genre  implements Serializable {
 //		setGenreName(genre);
 //	}
 
-	public int getIdGenre() {
+	public Integer getIdGenre() {
 		return idGenre;
 	}
 	
@@ -56,11 +54,11 @@ public class Genre  implements Serializable {
 		this.genreName = genreName;
 	}
 
-	public List<Book> getBooksGenre() {
-		return booksGenre;
+	public List<Book> getBooks() {
+		return books;
 	}
 
-	public void setBooksGenre(List<Book> booksGenre) {
-		this.booksGenre = booksGenre;
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 }

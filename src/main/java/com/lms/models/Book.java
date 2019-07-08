@@ -19,7 +19,7 @@ public class Book implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "book_id")
 	private Integer idBooks;
 	@Column(name = "book_title")
@@ -33,10 +33,10 @@ public class Book implements Serializable {
 	@Column(name = "book_status")
 	private Boolean bookStatus;
 
-	@ManyToOne//(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name = "id_author")
 	private Author booksAuthor;
-	@ManyToOne//(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	@JoinColumn(name = "id_genre")
 	private Genre booksGenre;
 

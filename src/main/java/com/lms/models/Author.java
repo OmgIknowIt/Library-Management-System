@@ -1,16 +1,15 @@
 package com.lms.models;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,15 +21,14 @@ public class Author  implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "author_id")
 	private Integer idAuthors;
 	@Column(name = "author_name")
 	private String authorName;
 
-	@OneToMany//(fetch = FetchType.EAGER)
-	//@JoinColumn(name = "id_author")
-	private List<Book> authorBooks = new ArrayList<Book>();
+	@OneToMany(mappedBy="booksAuthor", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	private List<Book> books;
 
 	public Author() {
 		super();
@@ -57,11 +55,11 @@ public class Author  implements Serializable {
 		this.authorName = authorName;
 	}
 
-	public List<Book> getAuthorBooks() {
-		return authorBooks;
+	public List<Book> getBooks() {
+		return books;
 	}
 
-	public void setAuthorBooks(List<Book> authorBooks) {
-		this.authorBooks = authorBooks;
+	public void setBooks(List<Book> books) {
+		this.books = books;
 	}
 }

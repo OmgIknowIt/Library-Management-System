@@ -6,11 +6,9 @@ import java.util.Optional;
 import com.lms.models.Book;
 
 public interface BookService {
-	public void addBook(Book book);
-
 	public Book getBook(Integer idBooks);
 
-	public Book updateBook(Integer idBooks, Book book);
+	public Book createOrUpdateBook(Book book);
 
 	public void deleteBook(Integer idBooks);
 

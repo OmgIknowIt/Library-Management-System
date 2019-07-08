@@ -9,7 +9,9 @@ public interface GenreService {
 
 	public Genre getGenre(Integer idGenre);
 
-	public Genre updateGenre(Integer idGenre, Genre genre);
+	public Genre createOrUpdateAuthor(Genre genre);
+	
+	public Integer findGenre (String genreName);
 
 	public List<Genre> getAllGenres();
 }
