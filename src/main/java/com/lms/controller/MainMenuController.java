@@ -47,7 +47,7 @@ public class MainMenuController {
 
 	@RequestMapping(value = "/save_book", method = RequestMethod.POST)
 	public ModelAndView saveBook(@ModelAttribute Book book) {
-			bookRepo.createOrUpdateBook(book);
+		bookRepo.createOrUpdateBook(book);
 		return new ModelAndView("redirect:/books");
 	}
 
@@ -57,7 +57,7 @@ public class MainMenuController {
 		bookRepo.deleteBook(bookId);
 		return new ModelAndView("redirect:/books");
 	}
-	
+
 	@RequestMapping(value = "/showInfo", method = RequestMethod.GET)
 	public ModelAndView showBookInfo(HttpServletRequest request) {
 		int bookId = Integer.parseInt(request.getParameter("id"));

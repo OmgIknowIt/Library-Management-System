@@ -11,7 +11,7 @@ import com.lms.repository.GenreRepo;
 
 @Service
 public class GenreServiceImpl implements GenreService {
-	
+
 	@Autowired
 	private GenreRepo genreRepo;
 
@@ -49,10 +49,12 @@ public class GenreServiceImpl implements GenreService {
 
 	@Override
 	public Integer findGenre(String genreName) {
-		List<Genre> genres = getAllGenres();
-		for (Genre genre : genres) {
-			if(genre.getGenreName().equals(genreName)) {
-				return genre.getIdGenre();
+		if (genreName != null) {
+			List<Genre> genres = getAllGenres();
+			for (Genre genre : genres) {
+				if (genre.getGenreName().equals(genreName)) {
+					return genre.getIdGenre();
+				}
 			}
 		}
 		return null;

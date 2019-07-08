@@ -11,7 +11,7 @@ import com.lms.repository.AuthorRepo;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
-	
+
 	@Autowired
 	private AuthorRepo authorRepo;
 
@@ -49,10 +49,12 @@ public class AuthorServiceImpl implements AuthorService {
 
 	@Override
 	public Integer findAuthor(String authorName) {
-		List<Author> authors = getAllAuthors();
-		for (Author author : authors) {
-			if(author.getAuthorName().equals(authorName)) {
-				return author.getIdAuthors();
+		if (authorName != null) {
+			List<Author> authors = getAllAuthors();
+			for (Author author : authors) {
+				if (author.getAuthorName().equals(authorName)) {
+					return author.getIdAuthors();
+				}
 			}
 		}
 		return null;

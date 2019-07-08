@@ -38,14 +38,10 @@ public class BookServiceImpl implements BookService {
 				newBook.setBookTitle(book.getBookTitle());
 				
 				Integer authorId = authorRepository.findAuthor(book.getBooksAuthor().getAuthorName());
-				Author author = book.getBooksAuthor();
-				author.setIdAuthors(authorId);
-				newBook.setBooksAuthor(author);
+				newBook.setBooksAuthor(authorRepository.getAuthor(authorId));
 
 				Integer genreId = genreRepository.findGenre(book.getBooksGenre().getGenreName());
-				Genre genre = book.getBooksGenre();
-				genre.setIdGenre(genreId);
-				newBook.setBooksGenre(genre);
+				newBook.setBooksGenre(genreRepository.getGenre(genreId));
 
 				newBook.setBookYear(book.getBookYear());
 				newBook.setBookDescription(book.getBookDescription());
