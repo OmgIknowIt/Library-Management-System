@@ -9,7 +9,7 @@
 <script th:src="@{/js/bootstrap.min.js}"></script>
 
 
-<title>List Books</title>
+<title>Book Information</title>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -36,41 +36,29 @@
 			</div>
 		</div>
 	</nav>
-
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="row">
 					<div>
 						<div align="center">
-							<legend>Book Lists</legend>
+							<legend>Book Information</legend>
 						</div>
-						<div class="table-responsive">
-							<table id="myBooks" class="table table-bordered table-hover"
-								dt:table="true">
-								<thead>
-									<tr>
-										<th>Title</th>
-										<th>Author</th>
-										<th>Year</th>
-										<th>Genre</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="book : ${listOfBooks}">
-										<td><a th:text="${book.getBookTitle()}" th:href="@{/showInfo/?id={id}(id=${book.getIdBooks()})}" target="_blank"></a></td>
-										<td th:text="${book.getBooksAuthor().getAuthorName()}"></td>
-										<td th:text="${book.getBookYear()}"></td>
-										<td th:text="${book.getBooksGenre().getGenreName()}"></td>
-										<td><a
-											th:href="@{/edit_book/?id={id}(id=${book.getIdBooks()})}"
-											class="btn btn-info">Edit</a> <a
-											th:href="@{/delete_book/?id={id}(id=${book.getIdBooks()})}"
-											class="btn btn-danger">Delete</a></td>
-									</tr>
-								</tbody>
-							</table>
+						<div class="container" style="margin-top: 30px" th:object="${book}">
+							<div class="row">
+								<div class="col-sm-4">
+									<img th:src="${book.getBookPicture()}" class="img-thumbnail" alt="Book Picture" width="304" height="236"> 
+									<hr class="d-sm-none">
+								</div>
+								<div class="col-sm-8">
+									<h1 th:text="${book.getBookTitle()}"></h1>
+									<h4 th:text="${book.getBooksAuthor().getAuthorName()}"></h4>
+									<h4 th:text="${book.getBookYear()}"></h4>
+									<h4 th:text="${book.getBooksGenre().getGenreName()}"></h4>
+									<p th:text="${book.getBookDescription()}"></p>
+									<br>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -61,4 +61,10 @@ public class MainMenuController {
 		bookRepo.deleteBook(bookId);
 		return new ModelAndView("redirect:/books");
 	}
+	
+	@RequestMapping(value = "/showInfo", method = RequestMethod.GET)
+	public ModelAndView showBookInfo(HttpServletRequest request) {
+		int bookId = Integer.parseInt(request.getParameter("id"));
+		return new ModelAndView("showInfo", "book", bookRepo.getBook(bookId));
+	}
 }
