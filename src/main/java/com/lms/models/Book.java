@@ -40,10 +40,6 @@ public class Book implements Serializable {
 	@JoinColumn(name = "id_genre")
 	private Genre booksGenre;
 
-	public Book() {
-		super();
-	}
-
 	public void setIdBooks(Integer idBooks) {
 		this.idBooks = idBooks;
 	}

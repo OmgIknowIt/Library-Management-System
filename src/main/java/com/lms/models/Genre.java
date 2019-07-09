@@ -29,15 +29,6 @@ public class Genre  implements Serializable {
 	@OneToMany(mappedBy="booksGenre", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Book> books;
 
-	public Genre() {
-		super();
-	}
-
-//	public Genre(String genre) {
-//		super();
-//		setGenreName(genre);
-//	}
-
 	public Integer getIdGenre() {
 		return idGenre;
 	}

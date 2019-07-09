@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.lms.models.Author;
 import com.lms.models.Book;
+import com.lms.models.Genre;
 import com.lms.service.AuthorService;
 import com.lms.service.BookService;
 import com.lms.service.GenreService;
@@ -22,9 +24,9 @@ public class MainMenuController {
 	@Autowired
 	private BookService bookRepo;
 	@Autowired
-	private GenreService genreRepo;
+	private AuthorService authorService;
 	@Autowired
-	private AuthorService authorRepo;
+	private GenreService genreService;
 
 	@RequestMapping(value = "/books", method = RequestMethod.GET)
 	public ModelAndView showAll() throws IOException {
@@ -33,9 +35,15 @@ public class MainMenuController {
 	}
 
 	@RequestMapping(value = "/add_book", method = RequestMethod.GET)
-	public ModelAndView newBook() {
+	public ModelAndView newBook(ModelAndView model) {
 		Book book = new Book();
-		return new ModelAndView("addBook", "book", book);
+		model.addObject("book", book);
+		List<Author> authorList = authorService.getAllAuthors();
+		model.addObject("authorList", authorList);
+		List<Genre> genreList = genreService.getAllGenres();
+		model.addObject("genreList", genreList);
+		model.setViewName("addBook");
+		return model;//new ModelAndView("addBook", "book", book);
 	}
 
 	@RequestMapping(value = "/edit_book", method = RequestMethod.GET)
@@ -62,5 +70,10 @@ public class MainMenuController {
 	public ModelAndView showBookInfo(HttpServletRequest request) {
 		int bookId = Integer.parseInt(request.getParameter("id"));
 		return new ModelAndView("showInfo", "book", bookRepo.getBook(bookId));
+	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView index() {
+		return new ModelAndView("redirect:/books");
 	}
 }

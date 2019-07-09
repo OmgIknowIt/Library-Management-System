@@ -38,10 +38,12 @@
 
 	<div align="center">
 		<h1>New/Edit Book</h1>
-		<form action="#" th:action="@{/save_book}" th:object="${book}"
-			method="post">
+		<form th:action="@{/save_book}" th:object="${book}" method="post">
 			<table>
-				<input type="hidden" th:field="*{idBooks}" />
+				<tr>
+					<td><input type="hidden" class="form-control"
+						th:field="*{idBooks}" /></td>
+				</tr>
 				<tr>
 					<td>Book Title:</td>
 					<td><input type="text" class="form-control"
@@ -49,8 +51,15 @@
 				</tr>
 				<tr>
 					<td>Author:</td>
-					<td><input type="text" class="form-control"
+					<!--<td><input type="text" class="form-control"
 						th:field="*{booksAuthor.authorName}"></input></td>
+					<td><input type="hidden" class="form-control"
+						th:field="*{booksAuthor.idAuthors}" /></td> 
+					-->
+					<td><select class="form-control" th:field="*{booksAuthor}">
+							<option th:each="author : ${authorList}"
+								th:value="${author.idAuthors}" th:utext="${author.authorName}" />
+					</select></td>
 				</tr>
 				<tr>
 					<td>Publish Year:</td>
@@ -59,13 +68,19 @@
 				</tr>
 				<tr>
 					<td>Genre:</td>
-					<td><input type="text" class="form-control"
+					<!--<td><input type="text" class="form-control"
 						th:field="*{booksGenre.genreName}"></input></td>
+					<td><input type="hidden" class="form-control"
+						th:field="*{booksGenre.idGenre}" /></td>-->
+					<td><select class="form-control" th:field="*{booksGenre}">
+							<option th:each="genre : ${genreList}"
+								th:value="${genre.idGenre}" th:utext="${genre.genreName}" />
+					</select></td>
 				</tr>
 				<tr>
 					<td>Description:</td>
 					<td><textarea type="text" class="form-control"
-						th:field="*{bookDescription}"></textarea></td>
+							th:field="*{bookDescription}"></textarea></td>
 				</tr>
 				<tr>
 					<td>Picture Link:</td>

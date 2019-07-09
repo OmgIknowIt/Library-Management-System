@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+<script th:src="@{/js/jquery-3.4.1.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+
+
+<title>List Books</title>
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header page-scroll">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span> Menu <i
+						class="fa fa-bars"></i>
+				</button>
+				<a class="navbar-brand" href="#">Text</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navbar-left">
+					<li class="active"></li>
+					<li><a href="/books">List Books</a></li>
+					<li><a href="/authors">List Authors</a></li>
+					<li><a href="/add_book">Add Book</a></li>
+					<li><a href="/add_author">Add Author</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+					<div>
+						<div align="center">
+							<legend>Search Book</legend>
+						</div>
+						<form action="#" th:action="@{/}" th:object="${search}">
+							<input class="form-control" type="text" placeholder="Search" aria-label="Search" name="search" id="search">
+							<div class="table-responsive" th:if="${not #lists.isEmpty(search)}">
+								<table id="myBooks" class="table table-bordered table-hover"
+									dt:table="true">
+									<thead>
+										<tr>
+											<th>Title</th>
+											<th>Author</th>
+											<th>Year</th>
+											<th>Genre</th>
+											<th>Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="find : ${search}">
+											<td><a th:text="${find.getBookTitle()}"
+												th:href="@{/showInfo/?id={id}(id=${find.getIdBooks()})}"
+												target="_blank"></a></td>
+											<td th:text="${find.getBooksAuthor().getAuthorName()}"></td>
+											<td th:text="${find.getBookYear()}"></td>
+											<td th:text="${find.getBooksGenre().getGenreName()}"></td>
+											<td><a
+												th:href="@{/edit_book/?id={id}(id=${find.getIdBooks()})}"
+												class="btn btn-info">Edit</a> <a
+												th:href="@{/delete_book/?id={id}(id=${find.getIdBooks()})}"
+												class="btn btn-danger">Delete</a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

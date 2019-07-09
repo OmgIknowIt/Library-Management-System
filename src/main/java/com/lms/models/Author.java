@@ -30,15 +30,6 @@ public class Author  implements Serializable {
 	@OneToMany(mappedBy="booksAuthor", fetch = FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<Book> books;
 
-	public Author() {
-		super();
-	}
-
-//	public Author(String authorsName) {
-//		super();
-//		setAuthorsName(authorName);
-//	}
-
 	public Integer getIdAuthors() {
 		return idAuthors;
 	}
