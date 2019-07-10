@@ -13,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Genre  implements Serializable {
+public class Genre implements Serializable {
 	/**
 	 * 
 	 */

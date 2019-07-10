@@ -39,7 +39,7 @@ public class AuthorController {
 	}
 
 	@RequestMapping(value = "/save_author", method = RequestMethod.POST)
-	public ModelAndView saveBook(@ModelAttribute Author author) {
+	public ModelAndView saveAuthor(@ModelAttribute Author author) {
 		authorService.createOrUpdateAuthor(author);
 		return new ModelAndView("redirect:/authors");
 	}

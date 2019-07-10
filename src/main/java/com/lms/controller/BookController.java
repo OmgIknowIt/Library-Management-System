@@ -47,10 +47,17 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/edit_book", method = RequestMethod.GET)
-	public ModelAndView updateBook(HttpServletRequest request) {
+	public ModelAndView updateBook(HttpServletRequest request, ModelAndView model) {
 		Integer bookId = Integer.parseInt(request.getParameter("id"));
 		Book book = bookRepo.getBook(bookId);
-		return new ModelAndView("addBook", "book", book);
+		model.addObject("book", book);
+		List<Author> authorList = authorService.getAllAuthors();
+		model.addObject("authorList", authorList);
+		List<Genre> genreList = genreService.getAllGenres();
+		model.addObject("genreList", genreList);
+		model.setViewName("addBook");
+		return model;
+//		return new ModelAndView("addBook", "book", book);
 	}
 
 	@RequestMapping(value = "/save_book", method = RequestMethod.POST)
