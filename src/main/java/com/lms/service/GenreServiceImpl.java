@@ -46,17 +46,4 @@ public class GenreServiceImpl implements GenreService {
 	public List<Genre> getAllGenres() {
 		return genreRepo.findAll();
 	}
-
-	@Override
-	public Integer findGenre(String genreName) {
-		if (genreName != null) {
-			List<Genre> genres = getAllGenres();
-			for (Genre genre : genres) {
-				if (genre.getGenreName().equals(genreName)) {
-					return genre.getIdGenre();
-				}
-			}
-		}
-		return null;
-	}
 }

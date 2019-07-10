@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -33,12 +34,25 @@ public class Book implements Serializable {
 	@Column(name = "book_status")
 	private Boolean bookStatus;
 
-	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_author")
 	private Author booksAuthor;
-	@ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_genre")
 	private Genre booksGenre;
+	
+	@Lob
+	@Column(name = "book_file")
+	private byte[] bookFile;
+
+	public byte[] getBookFile() {
+		return bookFile;
+	}
+
+	public void setBookFile(byte[] bookFile) {
+		this.bookFile = bookFile;
+	}
 
 	public void setIdBooks(Integer idBooks) {
 		this.idBooks = idBooks;
