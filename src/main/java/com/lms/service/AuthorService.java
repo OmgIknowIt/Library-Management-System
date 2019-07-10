@@ -8,8 +8,6 @@ public interface AuthorService {
 	public void addAuthor(Author author);
 
 	public Author getAuthor(Integer idAuthors);
-	
-	public Integer findAuthor(String authorName);
 
 	public Author createOrUpdateAuthor(Author author);
 

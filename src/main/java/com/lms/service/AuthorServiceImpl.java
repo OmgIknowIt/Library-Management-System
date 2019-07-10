@@ -33,7 +33,7 @@ public class AuthorServiceImpl implements AuthorService {
 			Optional<Author> currAuthor = authorRepo.findById(author.getIdAuthors());
 			if (currAuthor.isPresent()) {
 				Author newAuthor = currAuthor.get();
-				newAuthor.setAuthorsName(author.getAuthorName());
+				newAuthor.setAuthorName(author.getAuthorName());
 				newAuthor.setBooks(author.getBooks());
 				return authorRepo.save(newAuthor);
 			} else {
@@ -46,18 +46,4 @@ public class AuthorServiceImpl implements AuthorService {
 	public List<Author> getAllAuthors() {
 		return authorRepo.findAll();
 	}
-
-	@Override
-	public Integer findAuthor(String authorName) {
-		if (authorName != null) {
-			List<Author> authors = getAllAuthors();
-			for (Author author : authors) {
-				if (author.getAuthorName().equals(authorName)) {
-					return author.getIdAuthors();
-				}
-			}
-		}
-		return null;
-	}
-
 }

@@ -43,7 +43,7 @@ public class BookController {
 		List<Genre> genreList = genreService.getAllGenres();
 		model.addObject("genreList", genreList);
 		model.setViewName("addBook");
-		return model;//new ModelAndView("addBook", "book", book);
+		return model;
 	}
 
 	@RequestMapping(value = "/edit_book", method = RequestMethod.GET)
@@ -57,7 +57,6 @@ public class BookController {
 		model.addObject("genreList", genreList);
 		model.setViewName("addBook");
 		return model;
-//		return new ModelAndView("addBook", "book", book);
 	}
 
 	@RequestMapping(value = "/save_book", method = RequestMethod.POST)

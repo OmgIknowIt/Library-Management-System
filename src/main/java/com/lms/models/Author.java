@@ -42,7 +42,7 @@ public class Author  implements Serializable {
 		return authorName;
 	}
 
-	public void setAuthorsName(String authorName) {
+	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
 	}
 
