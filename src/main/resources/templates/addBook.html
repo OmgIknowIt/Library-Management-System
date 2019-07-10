@@ -29,8 +29,10 @@
 					<li class="active"></li>
 					<li><a href="/books">List Books</a></li>
 					<li><a href="/authors">List Authors</a></li>
+					<li><a href="/genres">List Genres</a></li>
 					<li><a href="/add_book">Add Book</a></li>
 					<li><a href="/add_author">Add Author</a></li>
+					<li><a href="/add_genre">Add Genre</a></li>
 				</ul>
 			</div>
 		</div>
@@ -47,15 +49,10 @@
 				<tr>
 					<td>Book Title:</td>
 					<td><input type="text" class="form-control"
-						th:field="*{bookTitle}"></input></td>
+						th:field="*{bookTitle}"/></td>
 				</tr>
 				<tr>
 					<td>Author:</td>
-					<!--<td><input type="text" class="form-control"
-						th:field="*{booksAuthor.authorName}"></input></td>
-					<td><input type="hidden" class="form-control"
-						th:field="*{booksAuthor.idAuthors}" /></td> 
-					-->
 					<td><select class="form-control" th:field="*{booksAuthor}">
 							<option th:each="author : ${authorList}"
 								th:value="${author.idAuthors}" th:utext="${author.authorName}" />
@@ -64,14 +61,10 @@
 				<tr>
 					<td>Publish Year:</td>
 					<td><input type="text" class="form-control"
-						th:field="*{bookYear}"></input></td>
+						th:field="*{bookYear}" /></td>
 				</tr>
 				<tr>
 					<td>Genre:</td>
-					<!--<td><input type="text" class="form-control"
-						th:field="*{booksGenre.genreName}"></input></td>
-					<td><input type="hidden" class="form-control"
-						th:field="*{booksGenre.idGenre}" /></td>-->
 					<td><select class="form-control" th:field="*{booksGenre}">
 							<option th:each="genre : ${genreList}"
 								th:value="${genre.idGenre}" th:utext="${genre.genreName}" />
@@ -79,23 +72,30 @@
 				</tr>
 				<tr>
 					<td>Description:</td>
-					<td><textarea type="text" class="form-control"
+					<td><textarea class="form-control"
 							th:field="*{bookDescription}"></textarea></td>
 				</tr>
 				<tr>
 					<td>Picture Link:</td>
 					<td><input type="url" class="form-control"
-						th:field="*{bookPicture}"></input></td>
+						th:field="*{bookPicture}"/></td>
 				</tr>
 				<tr>
-					<td>Status:</td>
-					<td><input type="text" class="form-control"
-						th:field="*{bookStatus}"></input></td>
+					<td>Hide:</td>
+					<td><input type="radio" class="form-control"
+						th:field="*{bookStatus}" th:value="1" name="Active"></td>
 				</tr>
-
+				<tr>
+					<td>Show:</td>
+					<td><input type="radio" class="form-control"
+						th:field="*{bookStatus}" th:value="0" name="Hidden"/></td>
+				</tr>
 				<tr>
 					&nbsp;&nbsp;
 					<td><button class="btn btn-danger" type="submit">Save</button></td>
+					<td></td>
+					<td></td>
+					<td><button class="btn" type="reset" >Reset</button></td>
 				</tr>
 			</table>
 		</form>

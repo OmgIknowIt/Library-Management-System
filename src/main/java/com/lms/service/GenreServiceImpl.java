@@ -26,7 +26,7 @@ public class GenreServiceImpl implements GenreService {
 	}
 
 	@Override
-	public Genre createOrUpdateAuthor(Genre genre) {
+	public Genre createOrUpdateGenre(Genre genre) {
 		if (genre.getIdGenre() == null) {
 			return genreRepo.save(genre);
 		} else {
@@ -59,5 +59,4 @@ public class GenreServiceImpl implements GenreService {
 		}
 		return null;
 	}
-
 }

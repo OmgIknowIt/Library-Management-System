@@ -8,8 +8,7 @@
 <script th:src="@{/js/jquery-3.4.1.js}"></script>
 <script th:src="@{/js/bootstrap.min.js}"></script>
 
-
-<title>Book Information</title>
+<title>Add Author</title>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -20,7 +19,7 @@
 					<span class="sr-only">Toggle navigation</span> Menu <i
 						class="fa fa-bars"></i>
 				</button>
-				<a class="navbar-brand" href="#">Text</a>
+				<a class="navbar-brand" href="#">TEXT</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -38,34 +37,23 @@
 			</div>
 		</div>
 	</nav>
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-12">
-				<div class="row">
-					<div>
-						<div align="center">
-							<legend>Book Information</legend>
-						</div>
-						<div class="container" style="margin-top: 30px" th:object="${book}">
-							<div class="row">
-								<div class="col-sm-4">
-									<img th:src="${book.getBookPicture()}" class="img-thumbnail" alt="Book Picture" width="304" height="236"> 
-									<hr class="d-sm-none">
-								</div>
-								<div class="col-sm-8">
-									<h1 th:text="${book.getBookTitle()}"></h1>
-									<h4 th:text="${book.getBooksAuthor().getAuthorName()}"></h4>
-									<h4 th:text="${book.getBookYear()}"></h4>
-									<h4 th:text="${book.getBooksGenre().getGenreName()}"></h4>
-									<p th:text="${book.getBookDescription()}"></p>
-									<br>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+
+	<div align="center">
+		<h1>New/Edit Genre</h1>
+		<form th:action="@{/save_genre}" th:object="${genre}" method="post">
+			<table>
+				<tr>
+					<td><input type="hidden" class="form-control"
+						th:field="*{idGenre}" /></td>
+				</tr>
+				<tr>
+					<td>Genre:</td>
+					<td><input type="text" class="form-control"
+						th:field="*{genreName}"></input></td>
+					<td><button class="btn btn-danger" type="submit">Save</button></td>
+				</tr>
+			</table>
+		</form>
 	</div>
 </body>
 </html>

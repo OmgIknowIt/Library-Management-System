@@ -14,10 +14,6 @@ public class BookServiceImpl implements BookService {
 
 	@Autowired
 	private BooksRepo bookRepository;
-	@Autowired
-	private GenreService genreRepository;
-	@Autowired
-	private AuthorService authorRepository;
 
 	@Override
 	public Book getBook(Integer idBooks) {

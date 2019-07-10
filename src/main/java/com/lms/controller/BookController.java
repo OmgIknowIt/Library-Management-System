@@ -20,7 +20,7 @@ import com.lms.service.BookService;
 import com.lms.service.GenreService;
 
 @Controller
-public class MainMenuController {
+public class BookController {
 	@Autowired
 	private BookService bookRepo;
 	@Autowired
@@ -48,7 +48,7 @@ public class MainMenuController {
 
 	@RequestMapping(value = "/edit_book", method = RequestMethod.GET)
 	public ModelAndView updateBook(HttpServletRequest request) {
-		int bookId = Integer.parseInt(request.getParameter("id"));
+		Integer bookId = Integer.parseInt(request.getParameter("id"));
 		Book book = bookRepo.getBook(bookId);
 		return new ModelAndView("addBook", "book", book);
 	}
@@ -61,14 +61,14 @@ public class MainMenuController {
 
 	@RequestMapping(value = "/delete_book", method = RequestMethod.GET)
 	public ModelAndView deleteBook(HttpServletRequest request) {
-		int bookId = Integer.parseInt(request.getParameter("id"));
+		Integer bookId = Integer.parseInt(request.getParameter("id"));
 		bookRepo.deleteBook(bookId);
 		return new ModelAndView("redirect:/books");
 	}
 
 	@RequestMapping(value = "/showInfo", method = RequestMethod.GET)
 	public ModelAndView showBookInfo(HttpServletRequest request) {
-		int bookId = Integer.parseInt(request.getParameter("id"));
+		Integer bookId = Integer.parseInt(request.getParameter("id"));
 		return new ModelAndView("showInfo", "book", bookRepo.getBook(bookId));
 	}
 	

@@ -12,6 +12,7 @@
 <title>List Books</title>
 </head>
 <body>
+	<div id="topNavBar"></div>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header page-scroll">
@@ -30,8 +31,10 @@
 					<li class="active"></li>
 					<li><a href="/books">List Books</a></li>
 					<li><a href="/authors">List Authors</a></li>
+					<li><a href="/genres">List Genres</a></li>
 					<li><a href="/add_book">Add Book</a></li>
 					<li><a href="/add_author">Add Author</a></li>
+					<li><a href="/add_genre">Add Genre</a></li>
 				</ul>
 			</div>
 		</div>
@@ -59,7 +62,9 @@
 								</thead>
 								<tbody>
 									<tr th:each="book : ${listOfBooks}">
-										<td><a th:text="${book.getBookTitle()}" th:href="@{/showInfo/?id={id}(id=${book.getIdBooks()})}" target="_blank"></a></td>
+										<td><a th:text="${book.getBookTitle()}"
+											th:href="@{/showInfo/?id={id}(id=${book.getIdBooks()})}"
+											target="_blank"></a></td>
 										<td th:text="${book.getBooksAuthor().getAuthorName()}"></td>
 										<td th:text="${book.getBookYear()}"></td>
 										<td th:text="${book.getBooksGenre().getGenreName()}"></td>

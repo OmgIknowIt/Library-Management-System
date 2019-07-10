@@ -9,7 +9,7 @@
 <script th:src="@{/js/bootstrap.min.js}"></script>
 
 
-<title>List Books</title>
+<title>List Authors</title>
 </head>
 <body>
 	<nav class="navbar navbar-default">
@@ -45,40 +45,29 @@
 				<div class="row">
 					<div>
 						<div align="center">
-							<legend>Search Book</legend>
+							<legend>Author Lists</legend>
 						</div>
-						<form action="#" th:action="@{/}" th:object="${search}">
-							<input class="form-control" type="text" placeholder="Search" aria-label="Search" name="search" id="search">
-							<div class="table-responsive" th:if="${not #lists.isEmpty(search)}">
-								<table id="myBooks" class="table table-bordered table-hover"
-									dt:table="true">
-									<thead>
-										<tr>
-											<th>Title</th>
-											<th>Author</th>
-											<th>Year</th>
-											<th>Genre</th>
-											<th>Action</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr th:each="find : ${search}">
-											<td><a th:text="${find.getBookTitle()}"
-												th:href="@{/showInfo/?id={id}(id=${find.getIdBooks()})}"
-												target="_blank"></a></td>
-											<td th:text="${find.getBooksAuthor().getAuthorName()}"></td>
-											<td th:text="${find.getBookYear()}"></td>
-											<td th:text="${find.getBooksGenre().getGenreName()}"></td>
-											<td><a
-												th:href="@{/edit_book/?id={id}(id=${find.getIdBooks()})}"
-												class="btn btn-info">Edit</a> <a
-												th:href="@{/delete_book/?id={id}(id=${find.getIdBooks()})}"
-												class="btn btn-danger">Delete</a></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</form>
+						<div class="table-responsive">
+							<table id="myBooks" class="table table-bordered table-hover"
+								dt:table="true">
+								<thead>
+									<tr>
+										<th>Author</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="author : ${listOfAuthors}">
+										<td th:text="${author.getAuthorName()}"></td>
+										<td><a
+											th:href="@{/edit_author/?id={id}(id=${author.getIdAuthors()})}"
+											class="btn btn-info">Edit</a> <!--  <a
+											th:href="@{/delete_book/?id={id}(id=${book.getIdBooks()})}"
+											class="btn btn-danger">Delete</a></td> -->
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
