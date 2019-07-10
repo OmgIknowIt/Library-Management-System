@@ -49,7 +49,7 @@
 				<tr>
 					<td>Book Title:</td>
 					<td><input type="text" class="form-control"
-						th:field="*{bookTitle}"/></td>
+						th:field="*{bookTitle}" /></td>
 				</tr>
 				<tr>
 					<td>Author:</td>
@@ -78,7 +78,14 @@
 				<tr>
 					<td>Picture Link:</td>
 					<td><input type="url" class="form-control"
-						th:field="*{bookPicture}"/></td>
+						th:field="*{bookPicture}" /></td>
+				</tr>
+				<tr>
+					<td>Book File:</td>
+					<td><input type="file" class="form-control"
+						th:field="*{bookFile}" /></td>
+					<!-- <td th:switch="${bookFile}"><button th:case="*"
+						class="form-control" th:field="*{bookFile}"></button></td> -->
 				</tr>
 				<tr>
 					<td>Hide:</td>
@@ -88,14 +95,14 @@
 				<tr>
 					<td>Show:</td>
 					<td><input type="radio" class="form-control"
-						th:field="*{bookStatus}" th:value="0" name="Hidden"/></td>
+						th:field="*{bookStatus}" th:value="0" name="Hidden" /></td>
 				</tr>
 				<tr>
 					&nbsp;&nbsp;
 					<td><button class="btn btn-danger" type="submit">Save</button></td>
 					<td></td>
 					<td></td>
-					<td><button class="btn" type="reset" >Reset</button></td>
+					<td><button class="btn" type="reset">Reset</button></td>
 				</tr>
 			</table>
 		</form>
