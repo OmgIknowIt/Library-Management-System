@@ -34,6 +34,7 @@ public class BookServiceImpl implements BookService {
 				newBook.setBookYear(book.getBookYear());
 				newBook.setBookDescription(book.getBookDescription());
 				newBook.setBookPicture(book.getBookPicture());
+				newBook.setBookFile(book.getBookFile());
 				newBook.setBookStatus(book.getBookStatus());
 				return bookRepository.save(newBook);
 			} else {
