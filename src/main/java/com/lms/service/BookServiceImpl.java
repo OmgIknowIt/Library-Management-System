@@ -34,6 +34,8 @@ public class BookServiceImpl implements BookService {
 				newBook.setBookYear(book.getBookYear());
 				newBook.setBookDescription(book.getBookDescription());
 				newBook.setBookPicture(book.getBookPicture());
+				newBook.setBookFileName(book.getBookFileName());
+				newBook.setBookFileType(book.getBookFileType());
 				newBook.setBookFile(book.getBookFile());
 				newBook.setBookStatus(book.getBookStatus());
 				return bookRepository.save(newBook);
@@ -45,7 +47,7 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public void deleteBook(Integer idBooks) {
-		bookRepository.deleteById(idBooks);// .getOne(idBooks).setBookStatus(false);
+		bookRepository.deleteById(idBooks);
 	}
 
 	@Override

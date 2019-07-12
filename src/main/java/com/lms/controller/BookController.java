@@ -3,12 +3,12 @@ package com.lms.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -67,7 +67,9 @@ public class BookController {
 
 	@RequestMapping(value = "/save_book", method = RequestMethod.POST)
 	public ModelAndView saveBook(@ModelAttribute Book book, @RequestParam("file") MultipartFile file) throws IOException {
+		book.setBookFileName(file.getOriginalFilename());
 		book.setBookFile(file.getBytes());
+		book.setBookFileType(file.getContentType());
 		bookRepo.createOrUpdateBook(book);
 		return new ModelAndView("redirect:/books");
 	}
@@ -85,15 +87,15 @@ public class BookController {
 		return new ModelAndView("showInfo", "book", bookRepo.getBook(bookId));
 	}
 	
-//	@RequestMapping(value = "/download", method = RequestMethod.GET)
-//	public ResponseEntity<ByteArrayResource> downloadBookFile(HttpServletRequest request) {
-//		Integer bookId = Integer.parseInt(request.getParameter("id"));
-//		Book book = bookRepo.getBook(bookId);
-//		return ResponseEntity.ok()
-//                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + book.getBookTitle() + "\"")
-//                .body(new ByteArrayResource(book.getBookFile()));
-//		//return new ModelAndView("showInfo", "book", bookRepo.getBook(bookId));
-//	}
+	@RequestMapping(value = "/download", method = RequestMethod.GET)
+	public ResponseEntity<ByteArrayResource> downloadBookFile(HttpServletRequest request) {
+		Integer bookId = Integer.parseInt(request.getParameter("id"));
+		Book book = bookRepo.getBook(bookId);
+		return ResponseEntity.ok()
+				.contentType(MediaType.parseMediaType(book.getBookFileType()))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + book.getBookFileName() + "\"")
+                .body(new ByteArrayResource(book.getBookFile()));
+	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {

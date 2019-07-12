@@ -45,14 +45,12 @@ public class Book implements Serializable {
 	@Lob
 	@Column(name = "book_file")
 	private byte[] bookFile;
-
-	public byte[] getBookFile() {
-		return bookFile;
-	}
-
-	public void setBookFile(byte[] bookFile) {
-		this.bookFile = bookFile;
-	}
+	
+	@Column(name = "book_file_type")
+	private String bookFileType;
+	
+	@Column(name = "book_file_name")
+	private String bookFileName;
 
 	public void setIdBooks(Integer idBooks) {
 		this.idBooks = idBooks;
@@ -116,5 +114,29 @@ public class Book implements Serializable {
 
 	public void setBooksGenre(Genre booksGenre) {
 		this.booksGenre = booksGenre;
+	}
+	
+	public String getBookFileType() {
+		return bookFileType;
+	}
+
+	public void setBookFileType(String bookFileType) {
+		this.bookFileType = bookFileType;
+	}
+
+	public byte[] getBookFile() {
+		return bookFile;
+	}
+
+	public void setBookFile(byte[] bookFile) {
+		this.bookFile = bookFile;
+	}
+	
+	public String getBookFileName() {
+		return bookFileName;
+	}
+
+	public void setBookFileName(String bookFileName) {
+		this.bookFileName = bookFileName;
 	}
 }

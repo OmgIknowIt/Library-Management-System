@@ -70,7 +70,7 @@
 										<td th:text="${book.getBookYear()}"></td>
 										<td th:text="${book.getBooksGenre().getGenreName()}"></td>
 										<td><a
-											th:href="@{/download_book/?id={id}(id=${book.getIdBooks()})}"
+											th:href="@{/download/?id={id}(id=${book.getIdBooks()})}"
 											class="btn btn-success">Download</a></td>
 										<td><a
 											th:href="@{/edit_book/?id={id}(id=${book.getIdBooks()})}"
