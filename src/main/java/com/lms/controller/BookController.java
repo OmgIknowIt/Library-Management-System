@@ -66,10 +66,17 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/save_book", method = RequestMethod.POST)
-	public ModelAndView saveBook(@ModelAttribute Book book, @RequestParam("file") MultipartFile file) throws IOException {
-		book.setBookFileName(file.getOriginalFilename());
-		book.setBookFile(file.getBytes());
-		book.setBookFileType(file.getContentType());
+	public ModelAndView saveBook(@ModelAttribute Book book, @RequestParam("file") MultipartFile file)
+			throws IOException {
+		if (!file.isEmpty()) {
+			book.setBookFileName(file.getOriginalFilename());
+			book.setBookFile(file.getBytes());
+			book.setBookFileType(file.getContentType());
+		} else {
+			book.setBookFileName(bookRepo.getBook(book.getIdBooks()).getBookFileName());
+			book.setBookFile(bookRepo.getBook(book.getIdBooks()).getBookFile());
+			book.setBookFileType(bookRepo.getBook(book.getIdBooks()).getBookFileType());
+		}
 		bookRepo.createOrUpdateBook(book);
 		return new ModelAndView("redirect:/books");
 	}
@@ -86,17 +93,16 @@ public class BookController {
 		Integer bookId = Integer.parseInt(request.getParameter("id"));
 		return new ModelAndView("showInfo", "book", bookRepo.getBook(bookId));
 	}
-	
+
 	@RequestMapping(value = "/download", method = RequestMethod.GET)
 	public ResponseEntity<ByteArrayResource> downloadBookFile(HttpServletRequest request) {
 		Integer bookId = Integer.parseInt(request.getParameter("id"));
 		Book book = bookRepo.getBook(bookId);
-		return ResponseEntity.ok()
-				.contentType(MediaType.parseMediaType(book.getBookFileType()))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + book.getBookFileName() + "\"")
-                .body(new ByteArrayResource(book.getBookFile()));
+		return ResponseEntity.ok().contentType(MediaType.parseMediaType(book.getBookFileType()))
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + book.getBookFileName() + "\"")
+				.body(new ByteArrayResource(book.getBookFile()));
 	}
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
 		return new ModelAndView("redirect:/books");
