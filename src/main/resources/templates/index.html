@@ -18,6 +18,7 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-left">
 					<li class="active"></li>
+					<li><a href="/find_book">Main Page</a></li>
 					<li><a href="/books">List Books</a></li>
 					<li><a href="/authors">List Authors</a></li>
 					<li><a href="/genres">List Genres</a></li>
@@ -45,6 +46,7 @@
 										placeholder="Search" aria-label="Search" name="search">
 									</td>
 									<td><select class="form-control" name="seacrhBy">
+											<option>- Search by -</option>
 											<option th:each="Res : ${listOfResults}" th:value="${Res}"
 												th:text="${Res}" />
 									</select></td>

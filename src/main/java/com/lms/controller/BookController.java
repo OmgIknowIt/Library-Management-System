@@ -120,7 +120,6 @@ public class BookController {
 				for (Book book : listOfBooks) {
 					if (book.getBookTitle().contains(search)) {
 						listOfResults.add(book);
-						continue;
 					}
 				}
 			}
@@ -128,7 +127,6 @@ public class BookController {
 				for (Book book : listOfBooks) {
 					if (book.getBooksAuthor().getAuthorName().contains(search)) {
 						listOfResults.add(book);
-						continue;
 					}
 				}
 			}
@@ -136,7 +134,6 @@ public class BookController {
 				for (Book book : listOfBooks) {
 					if (book.getBookYear() == Integer.parseInt(search)) {
 						listOfResults.add(book);
-						continue;
 					}
 				}
 			}
