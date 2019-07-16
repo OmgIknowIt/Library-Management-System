@@ -1,6 +1,7 @@
 package com.lms.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -88,7 +89,7 @@ public class BookController {
 		return new ModelAndView("redirect:/books");
 	}
 
-	@RequestMapping(value = "/showInfo", method = RequestMethod.GET)
+	@RequestMapping(value = "/show_info", method = RequestMethod.GET)
 	public ModelAndView showBookInfo(HttpServletRequest request) {
 		Integer bookId = Integer.parseInt(request.getParameter("id"));
 		return new ModelAndView("showInfo", "book", bookRepo.getBook(bookId));
@@ -103,8 +104,63 @@ public class BookController {
 				.body(new ByteArrayResource(book.getBookFile()));
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView index() {
-		return new ModelAndView("redirect:/books");
+	@RequestMapping(value = "/find_book", method = RequestMethod.GET)
+	public ModelAndView search(ModelAndView model, @RequestParam(value = "search", required=false) String search,
+			@RequestParam(value = "seacrhBy", required=false) String searchBy) {
+		List<String> searchByList = new ArrayList<String>();
+		searchByList.add("Book Title");
+		searchByList.add("Book Author");
+		searchByList.add("Book Year");
+		searchByList.add("Book Description");
+		model.addObject("listOfResults", searchByList);
+		if (search != null) {
+			List<Book> listOfBooks = bookRepo.getAllBooks();
+			List<Book> listOfResults = new ArrayList<Book>();
+			if (searchBy.equals("Book Title")) {
+				for (Book book : listOfBooks) {
+					if (book.getBookTitle().contains(search)) {
+						listOfResults.add(book);
+						continue;
+					}
+				}
+			}
+			if (searchBy.equals("Book Author")) {
+				for (Book book : listOfBooks) {
+					if (book.getBooksAuthor().getAuthorName().contains(search)) {
+						listOfResults.add(book);
+						continue;
+					}
+				}
+			}
+			if (searchBy.equals("Book Year")) {
+				for (Book book : listOfBooks) {
+					if (book.getBookYear() == Integer.parseInt(search)) {
+						listOfResults.add(book);
+						continue;
+					}
+				}
+			}
+			if (searchBy.equals("Book Description")) {
+				for (Book book : listOfBooks) {
+					if (book.getBookDescription().contains(search)) {
+						listOfResults.add(book);
+					}
+				}
+			}
+			model.addObject("listOfBooks", listOfResults);
+		}
+		model.setViewName("index");
+		return model;
 	}
+
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	public ModelAndView index() {
+//		List<String> searchByList = new ArrayList<String>();
+//		searchByList.add("Book Title");
+//		searchByList.add("Book Author");
+//		searchByList.add("Book Year");
+//		searchByList.add("Book Description");
+//		return 
+//	}
+
 }
