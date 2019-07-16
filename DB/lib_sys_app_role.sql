@@ -16,28 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `authors`
+-- Table structure for table `app_role`
 --
 
-DROP TABLE IF EXISTS `authors`;
+DROP TABLE IF EXISTS `app_role`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `authors` (
-  `author_id` int(11) NOT NULL AUTO_INCREMENT,
-  `author_name` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`author_id`),
-  UNIQUE KEY `AuthorName_UNIQUE` (`author_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+CREATE TABLE `app_role` (
+  `role_id` int(11) NOT NULL,
+  `role_name` varchar(30) NOT NULL,
+  PRIMARY KEY (`role_id`),
+  UNIQUE KEY `APP_ROLE_UK` (`role_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `authors`
+-- Dumping data for table `app_role`
 --
 
-LOCK TABLES `authors` WRITE;
-/*!40000 ALTER TABLE `authors` DISABLE KEYS */;
-INSERT INTO `authors` VALUES (28,'Howard Phillips Lovecraft'),(29,'Leo Tolstoy');
-/*!40000 ALTER TABLE `authors` ENABLE KEYS */;
+LOCK TABLES `app_role` WRITE;
+/*!40000 ALTER TABLE `app_role` DISABLE KEYS */;
+/*!40000 ALTER TABLE `app_role` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-07-16 15:31:13
+-- Dump completed on 2019-07-16 15:31:12
