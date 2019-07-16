@@ -12,23 +12,7 @@
 <title>List Authors</title>
 </head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-left">
-					<li class="active"></li>
-					<li><a href="/books">List Books</a></li>
-					<li><a href="/authors">List Authors</a></li>
-					<li><a href="/genres">List Genres</a></li>
-					<li><a href="/add_book">Add Book</a></li>
-					<li><a href="/add_author">Add Author</a></li>
-					<li><a href="/add_genre">Add Genre</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
+	<div th:replace="menuBar.html"></div>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12">

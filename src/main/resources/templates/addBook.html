@@ -11,23 +11,7 @@
 <title>Add Book</title>
 </head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-left">
-					<li class="active"></li>
-					<li><a href="/books">List Books</a></li>
-					<li><a href="/authors">List Authors</a></li>
-					<li><a href="/genres">List Genres</a></li>
-					<li><a href="/add_book">Add Book</a></li>
-					<li><a href="/add_author">Add Author</a></li>
-					<li><a href="/add_genre">Add Genre</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
+	<div th:replace="menuBar.html"></div>
 	<div align="center">
 		<h1>New/Edit Book</h1>
 		<form th:action="@{/save_book}" th:object="${book}" method="post"
@@ -73,7 +57,7 @@
 				</tr>
 				<tr>
 					<td>Book File:</td>
-					<td><input type="file" class="form-control" name="file"/></td>
+					<td><input type="file" class="form-control" name="file" /></td>
 					<!-- <td th:switch="${bookFile}"><button th:case="*"
 						class="form-control" th:field="*{bookFile}"></button></td> -->
 				</tr>
