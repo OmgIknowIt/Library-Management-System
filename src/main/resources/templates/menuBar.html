@@ -11,6 +11,13 @@
 				<li><a href="/add_book">Add Book</a></li>
 				<li><a href="/add_author">Add Author</a></li>
 				<li><a href="/add_genre">Add Genre</a></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li><a th:if="${#request.userPrincipal != null}"
+					th:href="@{/logout}">Logout</a></li>
 			</ul>
 		</div>
 	</div>

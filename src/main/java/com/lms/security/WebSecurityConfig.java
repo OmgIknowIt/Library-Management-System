@@ -46,21 +46,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 
 		// The pages does not require login
-		http.authorizeRequests().antMatchers("/", "/login", "/logout", "/welcome").permitAll();
+		http.authorizeRequests().antMatchers("/", "/login", "/logout").permitAll();
 
 		// /userInfo page requires login as ROLE_USER or ROLE_ADMIN.
 		// If no login, it will redirect to /login page.
-		http.authorizeRequests().antMatchers("/userInfo").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+		http.authorizeRequests().antMatchers("/find_book", "/show_info", "/download")
+				.access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
 
 		// For ADMIN only.
-		http.authorizeRequests().antMatchers("/admin", "/books", "/add_book", "/edit_book", 
-				"/save_book", "/delete_book", "/show_info", "/download", "/find_book", 
-				"/genres", "/add_genre", "/edit_genre", "/save_genre", "/authors", 
-				"/add_author", "/edit_author", "/save_author").access("hasRole('ROLE_ADMIN')");
-		
+		http.authorizeRequests().antMatchers("/add_book", "/edit_book/*", "/edit_book",
+				"/save_book", "/delete_book/*", "/delete_book", "/genres", "/add_genre", 
+				"/edit_genre", "/save_genre", "/authors", "/add_author", "/edit_author", 
+				"/save_author", "/books")
+				.access("hasRole('ROLE_ADMIN')");
+
 		// For USER.
-		http.authorizeRequests().antMatchers("/admin", "/books", 
-				"/show_info", "/download", "/find_book").access("hasRole('ROLE_ADMIN')");
+		http.authorizeRequests().antMatchers("/show_info", "/download")
+				.access("hasRole('ROLE_USER')");
 
 		// When the user has logged in as XX.
 		// But access a page that requires role YY,
@@ -72,12 +74,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				// Submit URL of login page.
 				.loginProcessingUrl("/j_spring_security_check") // Submit URL
 				.loginPage("/login")//
-				.defaultSuccessUrl("/userAccountInfo")//
+				.defaultSuccessUrl("/find_book")//
 				.failureUrl("/login?error=true")//
 				.usernameParameter("username")//
 				.passwordParameter("password")
 				// Config for Logout Page
-				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
+				.and().logout().logoutUrl("/logout").logoutSuccessUrl("/login");
 
 		// Config Remember Me.
 		http.authorizeRequests().and() //

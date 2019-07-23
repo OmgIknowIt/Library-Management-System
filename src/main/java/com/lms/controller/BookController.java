@@ -105,8 +105,8 @@ public class BookController {
 	}
 
 	@RequestMapping(value = "/find_book", method = RequestMethod.GET)
-	public ModelAndView search(ModelAndView model, @RequestParam(value = "search", required=false) String search,
-			@RequestParam(value = "seacrhBy", required=false) String searchBy) {
+	public ModelAndView search(ModelAndView model, @RequestParam(value = "search", required = false) String search,
+			@RequestParam(value = "seacrhBy", required = false) String searchBy) {
 		List<String> searchByList = new ArrayList<String>();
 		searchByList.add("Book Title");
 		searchByList.add("Book Author");
@@ -149,15 +149,4 @@ public class BookController {
 		model.setViewName("index");
 		return model;
 	}
-
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public ModelAndView index() {
-//		List<String> searchByList = new ArrayList<String>();
-//		searchByList.add("Book Title");
-//		searchByList.add("Book Author");
-//		searchByList.add("Book Year");
-//		searchByList.add("Book Description");
-//		return 
-//	}
-
 }
