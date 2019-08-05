@@ -11,16 +11,14 @@
 <body>
 	<div id="login">
 		<h3 class="text-center text-white pt-5">Login form</h3>
-		<div class="container"
-			th:if="${#request.getParameter('error') == 'true'}"
-			style="color: red; margin: 10px 0px;">
-
-			         Login Failed!!!<br />          Reason :          <span
-				th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
-				th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
-				                Static summary          </span>                    
-		</div>
 		<div class="container">
+			<div class="container" th:if="${#request.getParameter('error') == 'true'}">
+				<h5 class="text-center text-info"> Login Failed!</h5>
+				<h5 class="text-center text-info">Reason : <span class="text-center text-info"
+					th:if="${#session!= null and #session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION') != null}"
+					th:utext="${#session.getAttribute('SPRING_SECURITY_LAST_EXCEPTION').message}">
+					Static summary</span></h5>                    
+			</div>
 			<div id="login-row"
 				class="row justify-content-center align-items-center">
 				<div id="login-column" class="col-md-6">

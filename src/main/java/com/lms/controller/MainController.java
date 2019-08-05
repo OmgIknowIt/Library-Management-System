@@ -44,9 +44,9 @@ public class MainController {
 		return model;
 	}
 	
-//	@RequestMapping(value = "/registation", method = RequestMethod.POST)
-//	public ModelAndView reg() {
-//		return null;
-//		
-//	}
+	@RequestMapping(value = "/registration", method = RequestMethod.POST)
+	public ModelAndView reg(ModelAndView model) {
+		model.setViewName("registration");
+		return model;
+	}
 }
