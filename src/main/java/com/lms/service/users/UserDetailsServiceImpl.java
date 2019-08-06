@@ -13,19 +13,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.lms.models.users.AppUser;
-import com.lms.repository.users.AppRoleDAO;
-import com.lms.repository.users.AppUserDAO;
 import com.lms.repository.users.RoleRepository;
 import com.lms.repository.users.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
-
-	@Autowired
-	private AppUserDAO appUserDAO;
-
-	@Autowired
-	private AppRoleDAO appRoleDAO;
 	
 	@Autowired
 	private UserRepository userRepo;
@@ -35,7 +27,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	@Override
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-//		AppUser appUser = this.appUserDAO.findUserAccount(userName);
 		AppUser appUser = this.userRepo.findUserAccount(userName);
 		
 		if (appUser == null) {
@@ -46,7 +37,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		System.out.println("Found User: " + appUser.getUserName());
 
 		// [ROLE_USER, ROLE_ADMIN,..]
-//		List<String> roleNames = this.appRoleDAO.getRoleNames(appUser.getUserId());
 		List<String> roleNames = this.roleRepo.getRoleNames(appUser.getUserId());
 
 		List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();

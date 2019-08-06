@@ -5,10 +5,12 @@ import java.security.Principal;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.lms.models.users.AppUser;
 import com.lms.utils.WebUtils;
 
 @Controller
@@ -44,9 +46,10 @@ public class MainController {
 		return model;
 	}
 	
-	@RequestMapping(value = "/registration", method = RequestMethod.POST)
-	public ModelAndView reg(ModelAndView model) {
-		model.setViewName("registration");
-		return model;
-	}
+//	@RequestMapping(value = "/registration")
+//	public ModelAndView reg(@ModelAttribute AppUser user, ModelAndView model) {
+//		model.setViewName("registration");
+//		model.addObject("user", user);
+//		return model;
+//	}
 }
