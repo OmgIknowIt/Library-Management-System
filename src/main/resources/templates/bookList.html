@@ -35,7 +35,7 @@
 								<tbody>
 									<tr th:each="book : ${listOfBooks}">
 										<td><a th:text="${book.getBookTitle()}"
-											th:href="@{/showInfo/?id={id}(id=${book.getIdBooks()})}"
+											th:href="@{/show_info/?id={id}(id=${book.getIdBooks()})}"
 											target="_blank"></a></td>
 										<td th:text="${book.getBooksAuthor().getAuthorName()}"></td>
 										<td th:text="${book.getBookYear()}"></td>

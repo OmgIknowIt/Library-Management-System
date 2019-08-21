@@ -15,9 +15,8 @@ public class AuthorServiceImpl implements AuthorService {
 	@Autowired
 	private AuthorRepo authorRepo;
 
-	@Override
-	public void addAuthor(Author author) {
-		authorRepo.save(author);
+	public Author addAuthor(Author author) {
+		return authorRepo.save(author);
 	}
 
 	@Override
@@ -28,16 +27,16 @@ public class AuthorServiceImpl implements AuthorService {
 	@Override
 	public Author createOrUpdateAuthor(Author author) {
 		if (author.getIdAuthors() == null) {
-			return authorRepo.save(author);
+			return addAuthor(author);
 		} else {
 			Optional<Author> currAuthor = authorRepo.findById(author.getIdAuthors());
 			if (currAuthor.isPresent()) {
 				Author newAuthor = currAuthor.get();
 				newAuthor.setAuthorName(author.getAuthorName());
 				newAuthor.setBooks(author.getBooks());
-				return authorRepo.save(newAuthor);
+				return addAuthor(newAuthor);
 			} else {
-				return authorRepo.save(author);
+				return addAuthor(author);
 			}
 		}
 	}
