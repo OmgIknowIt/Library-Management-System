@@ -48,9 +48,11 @@ public class GenreServiceImplTest {
 	}
 	
 	@Test
-	public void getAuthorTest() {
-		Genre a = findGenre("Horror");
-		assertEquals("Horror", genServ.getGenre(a.getIdGenre()).getGenreName());
+	public void getGenreTest() {
+		List<Genre> genres = genServ.getAllGenres();
+		Genre a = genres.get(0);
+		Genre b = genServ.getGenre(a.getIdGenre());
+		assertEquals(a.getGenreName(), b.getGenreName());
 	}
 	
 	public Genre findGenre(String genreName) {

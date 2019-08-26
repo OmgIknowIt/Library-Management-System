@@ -13,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.lms.models.Author;
+import com.lms.models.Genre;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -50,8 +51,10 @@ public class AuthorServiceImplTest {
 	
 	@Test
 	public void getAuthorTest() {
-		Author a = findAuthor("Leo Tolstoy");
-		assertEquals("Leo Tolstoy", autServ.getAuthor(a.getIdAuthors()).getAuthorName());
+		List<Author> authors = autServ.getAllAuthors();
+		Author a = authors.get(0);
+		Author b = autServ.getAuthor(a.getIdAuthors());
+		assertEquals(a.getAuthorName(), b.getAuthorName());
 	}
 	
 	public Author findAuthor(String authorName) {
