@@ -14,12 +14,7 @@ public class GenreServiceImpl implements GenreService {
 
 	@Autowired
 	private GenreRepo genreRepo;
-
-	@Override
-	public void addGenre(Genre genre) {
-		genreRepo.save(genre);
-	}
-
+	
 	@Override
 	public Genre getGenre(Integer idGenre) {
 		return genreRepo.getOne(idGenre);
