@@ -11,6 +11,6 @@ When workbench will be installed launch it and import project's database from "D
 After that launch project and follow the link http://localhost:8080.
 
 ## Interface
-After loggining:
+After logging in:
 * as admin, user can add autors, genres and books. Firstly admin should add author and genre before adding a book (if author or genre of a book doesn't exist in the databse).
 * as a common user, user can search books and download them.
