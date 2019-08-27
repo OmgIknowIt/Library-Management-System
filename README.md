@@ -5,7 +5,12 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 To run this project you need: 
 * [MySQL Workbench](https://www.mysql.com/products/workbench/)
-* [Spring Tool Suite](https://spring.io/tools) / [IntelliJ IDEA](https://www.jetbrains.com/idea/) with Maven or just [Maven](https://maven.apache.org/download.cgi) and command console.
+* [Spring Tool Suite](https://spring.io/tools) or [IntelliJ IDEA](https://www.jetbrains.com/idea/) with [Maven](https://maven.apache.org/download.cgi).
 
 When workbench will be installed launch it and import project's database from "DB" folder to mysql workbench.
 After that launch project and follow the link http://localhost:8080.
+
+## Interface
+After loggining:
+* as admin, user can add autors, genres and books. Firstly admin should add author and genre before adding a book (if author or genre of a book doesn't exist in the databse).
+* as a common user, user can search books and download them.
